@@ -1,5 +1,5 @@
 /* @flow */
-import AutoNumeric from 'autonumeric'
+import AutoNumeric from 'autonumeric/dist/autoNumeric.min.js'
 import { error } from './util/log'
 
 let localOptions = {

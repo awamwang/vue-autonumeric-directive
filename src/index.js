@@ -1,7 +1,7 @@
 /* @flow */
-
+import './util/polyfiil'
 import getOptions from './options'
-import AutoNumeric from 'autonumeric'
+import AutoNumeric from 'autonumeric/dist/autoNumeric.min.js'
 import { setProp } from './util/lang'
 import { checkElementType, unshiftEventHandler, getVNodeValue, getElementValue } from './util/dom'
 
@@ -10,7 +10,6 @@ let MyPlugin = {
 }
 
 MyPlugin.install = function(Vue: Vue, outerOptions: PluginsOptions = {}) {
-  // IE兼容性
   Vue.directive('number', {
     bind(el, binding: VNodeDirective, vnode: VNode) {
       let targetElement = checkElementType(el, vnode)

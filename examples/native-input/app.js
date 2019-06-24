@@ -1,6 +1,6 @@
 Vue.use(VueNumberFormat)
 
-window.onload = () => {
+window.onload = function() {
   input1.addEventListener('keyup', function(e) {
     console.log(e.target.value, 'should be kept')
   })
