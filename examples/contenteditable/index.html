@@ -18,8 +18,13 @@
     </section>
 
     <p>Default options: float, decimalPlaces(presion) = 2 ; Options: {{config1}}</p>
-    <label for="input1">input1: </label><input name="input1" id="input1" v-model="input1" v-number="config1">
+    <label for="input1">input1: </label><p name="input1" id="input1" v-model="input1" v-number="config1" contenteditable></p>
     <p>Modified value in Vue data:  {{input1}}</p>
+    <br />
+    <p>local option: FR ; Options: {{config2}}</p>
+    <label for="input2">input2: </label><p name="input2" id="input2" v-model="input2.num" v-number="config2" contenteditable></p>
+    <p>Modified value in Vue data:  {{input2}}</p>
+    <br />
   </div>
 
   <script src="./app.js"></script>

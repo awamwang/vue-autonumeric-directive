@@ -10,19 +10,16 @@ let MyPlugin = {
 }
 
 MyPlugin.install = function(Vue: Vue, outerOptions: PluginsOptions = {}) {
-  // 处理后事件传递
-  // 适用范围，支持其他TAG
-  // 修改为keydown思路，体验更好
   // IE兼容性
   Vue.directive('number', {
     bind(el, binding: VNodeDirective, vnode: VNode) {
-      checkElementType(el)
+      let targetElement = checkElementType(el, vnode)
 
       let options: Options = getOptions(binding, outerOptions)
 
-      el._autoNumericElement = new AutoNumeric(el, options.numricOptions)
+      el._autoNumericElement = new AutoNumeric(targetElement, options.numricOptions)
       let setValue = options.unsafeSet ? unsafeSetValue : safeSetValue
-      let oldValue = el.value
+      let oldValue = targetElement.value
 
       function unsafeSetValue(value) {
         let cmd = `vnode.context.${options.bind} = \'${value === null ? '' : value}\'`
@@ -55,13 +52,13 @@ MyPlugin.install = function(Vue: Vue, outerOptions: PluginsOptions = {}) {
       //   console.log(event)
       // }
 
-      unshiftEventHandler(el, 'keydown', onkeyDown)
-      unshiftEventHandler(el, 'keyup', updateVueInstance)
-      unshiftEventHandler(el, 'change', updateVueInstance)
-      // unshiftEventHandler(el, 'autoNumeric:minExceeded', onMinExceeded)
-      // unshiftEventHandler(el, 'autoNumeric:maxExceeded', onMaxExceeded)
+      unshiftEventHandler(targetElement, 'keydown', onkeyDown)
+      unshiftEventHandler(targetElement, 'keyup', updateVueInstance)
+      unshiftEventHandler(targetElement, 'change', updateVueInstance)
+      // unshiftEventHandler(targetElement, 'autoNumeric:minExceeded', onMinExceeded)
+      // unshiftEventHandler(targetElement, 'autoNumeric:maxExceeded', onMaxExceeded)
 
-      unshiftEventHandler(el, 'paste', (event) => {
+      unshiftEventHandler(targetElement, 'paste', (event) => {
         event.preventDefault()
       })
     },

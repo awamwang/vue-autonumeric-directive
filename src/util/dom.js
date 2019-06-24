@@ -1,21 +1,51 @@
 import { error } from './log'
 
 const allowedInputType = ['text', 'tel', 'hidden', null]
-{/* <p id="editableDom" contenteditable="true">12345678.9012</p> */}
 const allowedTagList = [
-    'b', 'caption', 'cite', 'code', 'const', 'dd', 'del', 'div', 'dfn', 'dt', 'em', 'h1', 'h2', 'h3',
-    'h4', 'h5', 'h6', 'ins', 'kdb', 'label', 'li', 'option', 'output', 'p', 'q', 's', 'sample',
-    'span', 'strong', 'td', 'th', 'u'
+  'b', 'caption', 'cite', 'code', 'const', 'dd', 'del', 'div', 'dfn', 'dt', 'em', 'h1', 'h2', 'h3',
+  'h4', 'h5', 'h6', 'ins', 'kdb', 'label', 'li', 'option', 'output', 'p', 'q', 's', 'sample',
+  'span', 'strong', 'td', 'th', 'u'
 ]
 
-export let checkElementType = (el) => {
-  if (el.tagName !== 'INPUT' || !allowedInputType.includes(el.getAttribute('type'))) {
-    error('wrong element type')
+function getChildInput(el) {
+  if (el.children) {
+    let input = Array.prototype.find.call(el.children, e => e.tagName === 'INPUT')
+
+    if (input) {
+      return input
+    }
+  }
+
+  return el
+}
+
+function handleElementUI(el, realElement, vnode) {
+  if (Array.prototype.includes.call(el.classList, 'el-input')) {
+    realElement.value = vnode.data.model.value
   }
 }
 
+export let checkElementType = (el, vnode) => {
+  let realElement = getChildInput(el)
+  handleElementUI(el, realElement, vnode)
+
+  if (realElement.tagName === 'INPUT') {
+    if (!allowedInputType.includes(realElement.getAttribute('type'))) {
+      error('wrong INPUT element type')
+    }
+  } else if (!realElement.getAttribute('contenteditable')) {
+    if (allowedTagList.includes(realElement.tagName)) {
+      warn('once use to format number')
+    } else {
+      error('wrong element type, or should be contenteditable')
+    }
+  }
+
+  return realElement
+}
+
 export let unshiftEventHandler = (el, eventType, handler) => {
-  el.addEventListener(eventType, handler) 
+  el.addEventListener(eventType, handler)
   // let handlerArr = getEventListeners(el)[eventType]
   // console.log(handlerArr)
 

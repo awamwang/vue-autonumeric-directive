@@ -5,7 +5,11 @@ new Vue({
 
   data: {
     input1: '123.00',
-    config1: { bind: 'input1', unsafeSet: true },
+    config1: { bind: 'input1' },
+    input2: {
+      num: '',
+    },
+    config2: { bind: 'input2.num', min: '0', presion: 3, local: 'FR', },
   },
 
   created: function() {},
