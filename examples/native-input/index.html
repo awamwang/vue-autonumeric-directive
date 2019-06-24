@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../libs/vue.min-2.6.10.js"></script>
+  <script src="../../dist/vue-autonumeric-directive.js"></script>
+  <!-- <script src="../../dist/vue-autonumeric-directive.min.js"></script> -->
+</head>
+
+<body>
+  <div id="demo">
+    <section>
+      <!-- <p>{{}}</p> -->
+    </section>
+
+    <p>Default options: float, decimalPlaces(presion) = 2 ; Options: {{config1}}</p>
+    <label for="input1">input1: </label><input name="input1" id="input1" v-model="input1" v-number="config1">
+    <p>Modified value in Vue data:  {{input1}}</p>
+    <br />
+    <p>integer: -5~100 ; v-number.int, Options: {{config2}}</p>
+    <label for="input2">input2: </label><input type="text" name="input2" id="input2" v-model="input2" v-number.int="config2">
+    <p>Modified value in Vue data:  {{input2}}</p>
+    <br />
+    <p>local option: FR ; Options: {{config3}}</p>
+    <label for="input3">input3: </label><input type="text" name="input3" id="input3" v-model="input3.num" v-number="config3">
+    <p>Modified value in Vue data:  {{input3}}</p>
+    <br />
+    <p>predifined option: predifined: 'integerNeg' ; Options: {{config4}}</p>
+    <label for="input4">input4: </label><input type="text" name="input4" id="input4" v-model="input4.arr[0].v" v-number="config4">
+    <p>Modified value in Vue data:  {{input4}}</p>
+    <br />
+    <p>no digitGroupSeparator; Options: v-number.pure,  {{config5}}</p>
+    <label for="input5">input5: </label><input type="text" name="input5" id="input5" v-model="input5" v-number.pure="config5">
+    <p>Modified value in Vue data:  {{input5}}</p>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+
+</html>

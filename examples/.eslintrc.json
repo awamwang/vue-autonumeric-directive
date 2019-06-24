@@ -1,0 +1,9 @@
+{
+  "rules": {
+    "indent": 0
+  },
+  "globals": {
+    "Vue": true,
+    "VueNumberFormat": true
+  }
+}

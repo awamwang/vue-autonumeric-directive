@@ -1,0 +1,16 @@
+[ignore]
+.*/node_modules/.*
+.*/test/.*
+.*/scripts/.*
+.*/examples/.*
+.*/benchmarks/.*
+
+[include]
+
+[libs]
+flow
+
+[options]
+; unsafe.enable_getters_and_setters=true
+module.name_mapper='^compiler/\(.*\)$' -> '<PROJECT_ROOT>/src/compiler/\1'
+suppress_comment= \\(.\\|\n\\)*\\$flow-disable-line

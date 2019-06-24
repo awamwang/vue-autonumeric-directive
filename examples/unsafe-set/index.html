@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../libs/vue.min-2.6.10.js"></script>
+  <script src="../../dist/vue-autonumeric-directive.js"></script>
+  <script src="http://localhost:8098"></script>
+</head>
+
+<body>
+  <div id="demo">
+    <label for="input1">input1: </label><input type="text" name="input1" id="input1" v-model="input1" v-number.int="{bind: 'input1', min: 0}">
+    <br/>
+    <label for="input2">input1: </label><input type="text" name="input2" id="input1" v-model="input2" v-number.int.number="{bind: 'input2', min: 0}">
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+
+</html>
