@@ -13,16 +13,3 @@ export let setProp = function setProp(obj, path, value) {
   }
   obj[arr[0]] = value;
 }
-
-
-export let stringToNumber = function stringToNumber(v) {
-  if (v === '') {
-    return null
-  } else {
-    return Number(v)
-  }
-}
-
-export let removeLastChar = function removeLastChar(v) {
-  return v.substring(0, v.length - 1)
-}

@@ -3,7 +3,7 @@
 import getOptions from './options'
 import AutoNumeric from 'autonumeric'
 import { setProp } from './util/lang'
-import { checkElementType, unshiftEventHandler } from './util/dom'
+import { checkElementType, unshiftEventHandler, getVNodeValue, getElementValue } from './util/dom'
 
 let MyPlugin = {
   AutoNumeric,
@@ -14,12 +14,12 @@ MyPlugin.install = function(Vue: Vue, outerOptions: PluginsOptions = {}) {
   Vue.directive('number', {
     bind(el, binding: VNodeDirective, vnode: VNode) {
       let targetElement = checkElementType(el, vnode)
+      let oldValue = getVNodeValue(vnode)
 
       let options: Options = getOptions(binding, outerOptions)
 
-      el._autoNumericElement = new AutoNumeric(targetElement, options.numricOptions)
+      el._autoNumericElement = new AutoNumeric(targetElement, oldValue, options.numricOptions)
       let setValue = options.unsafeSet ? unsafeSetValue : safeSetValue
-      let oldValue = targetElement.value
 
       function unsafeSetValue(value) {
         let cmd = `vnode.context.${options.bind} = \'${value === null ? '' : value}\'`
@@ -32,42 +32,26 @@ MyPlugin.install = function(Vue: Vue, outerOptions: PluginsOptions = {}) {
 
       /* 事件处理 */
       function onkeyDown(event) {
-        oldValue = event.target.value
+        oldValue = getElementValue(event.target)
       }
 
       function updateVueInstance(event) {
         setTimeout(() => {
-          let newValue = event.target.value
+          let newValue = getElementValue(event.target)
           if (newValue !== oldValue) {
             setValue(newValue)
           }
         }, 0)
       }
 
-      // function onMinExceeded(event) {
-      //   console.log(event)
-      // }
-
-      // function onMaxExceeded(event) {
-      //   console.log(event)
-      // }
-
       unshiftEventHandler(targetElement, 'keydown', onkeyDown)
       unshiftEventHandler(targetElement, 'keyup', updateVueInstance)
       unshiftEventHandler(targetElement, 'change', updateVueInstance)
-      // unshiftEventHandler(targetElement, 'autoNumeric:minExceeded', onMinExceeded)
-      // unshiftEventHandler(targetElement, 'autoNumeric:maxExceeded', onMaxExceeded)
 
       unshiftEventHandler(targetElement, 'paste', (event) => {
         event.preventDefault()
       })
     },
-    // update(el, binding, vnode, oldVnode) {
-    //   console.log('update', el, binding, vnode, oldVnode)
-    // },
-    // unbind(el, binding, vnode, oldVnode) {
-    //   console.log('unbind', el, binding, vnode, oldVnode)
-    // },
   })
 }
 
