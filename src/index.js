@@ -1,5 +1,4 @@
 /* @flow */
-import './util/polyfiil'
 import getOptions from './options'
 import AutoNumeric from 'autonumeric/dist/autoNumeric.min.js'
 import { setProp } from './util/lang'
@@ -7,6 +6,7 @@ import { checkElementType, unshiftEventHandler, getVNodeValue, getElementValue }
 
 let MyPlugin = {
   AutoNumeric,
+  install: Function
 }
 
 MyPlugin.install = function(Vue: Vue, outerOptions: PluginsOptions = {}) {

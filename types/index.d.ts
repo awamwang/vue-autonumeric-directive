@@ -1,4 +1,5 @@
 export {
   PluginsOptions,
-  Options
+  Options,
+  InputOptions
 } from "./options";

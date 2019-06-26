@@ -1,6 +1,8 @@
 /* @flow */
 import AutoNumeric from 'autonumeric/dist/autoNumeric.min.js'
-import { error } from './util/log'
+import {
+  error
+} from './util/log'
 
 let localOptions = {
   FR: 'French',
@@ -15,7 +17,7 @@ let localOptions = {
 }
 
 function setNumricOptions(optionsArr, key, value) {
-  let realOption = optionsArr[optionsArr.length - 1][key] = value
+  optionsArr[optionsArr.length - 1][key] = value
 }
 
 function handleLocalOption(binding, options) {
@@ -67,7 +69,7 @@ export default function getOptions(binding: VNodeDirective, outerOptions: Plugin
   let isInt: boolean = binding.modifiers.int
   let unsafeSet: boolean = binding.value.unsafeSet || outerOptions.unsafeSet
 
-  let numricOptions: Array < AutoNumericOptions > = binding.value.numricOptions ? [binding.value.numricOptions] : [{}]
+  let numricOptions: Array<AutoNumericOptions> = binding.value.numricOptions ? [binding.value.numricOptions] : [{}]
 
   if (isInt && !binding.value.predifined) {
     binding.value.predifined = 'integer'

@@ -1,7 +1,12 @@
-import { error, warn } from './log'
-import { getProp } from './lang'
+import {
+  error,
+  // warn
+} from './log'
+import {
+  includes
+} from './lang'
 
-const allowedInputType = ['text', 'tel', 'hidden', null]
+const allowedInputType = ['text', 'tel', 'hidden']
 const allowedTagList = [
   'b', 'caption', 'cite', 'code', 'const', 'dd', 'del', 'div', 'dfn', 'dt', 'em', 'h1', 'h2', 'h3',
   'h4', 'h5', 'h6', 'ins', 'kdb', 'label', 'li', 'option', 'output', 'p', 'q', 's', 'sample',
@@ -10,10 +15,11 @@ const allowedTagList = [
 
 function getChildInput(el) {
   if (el.children) {
-    let input = Array.prototype.find.call(el.children, e => e.tagName === 'INPUT')
-
-    if (input) {
-      return input
+    for (let i = 0, len = el.children.length; i < len - 1; i++) {
+      let child = el.children[i]
+      if (child.tagName === 'INPUT') {
+        return child
+      }
     }
   }
 
@@ -21,7 +27,7 @@ function getChildInput(el) {
 }
 
 function handleElementUI(el, realElement, vnode) {
-  if (Array.prototype.includes.call(el.classList, 'el-input')) {
+  if (includes(el.classList, 'el-input')) {
     realElement.value = vnode.data.model.value
   }
 }
@@ -31,11 +37,11 @@ export let checkElementType = (el, vnode) => {
   handleElementUI(el, realElement, vnode)
 
   if (realElement.tagName === 'INPUT') {
-    if (!allowedInputType.includes(realElement.getAttribute('type'))) {
+    if (realElement.getAttribute('type') && !includes(allowedInputType, realElement.getAttribute('type'))) {
       error('wrong INPUT element type')
     }
   } else if (!realElement.getAttribute('contenteditable')) {
-    if (allowedTagList.includes(realElement.tagName.toLowerCase())) {
+    if (includes(allowedTagList, realElement.tagName.toLowerCase())) {
       // warn('once use to format number')
     } else {
       error('wrong element type, or should be contenteditable')
