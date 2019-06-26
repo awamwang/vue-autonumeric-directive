@@ -1,26 +1,29 @@
-export type MinMaXFlag = "<" | ">" | "<=" | ">="
-
 export type PluginsOptions = {
   unsafeSet: boolean; // use unsafe method to set value to element and vnode (eval, more powerful)
 
   presion: number;
 }
 
+export type AutoNumericOptions = Object
+
 export type Options = {
   unsafeSet: boolean;
 
   bind: string;
-  isInt ? : boolean;
-  toNumber ? : boolean;
 
-  min ? : number;
-  minFlag ? : MinMaXFlag;
-  minValidValue: string;
-  max ? : number;
-  maxFlag ? : MinMaXFlag;
-  maxValidValue: string;
-  presion: number;
+  numricOptions: Array < AutoNumericOptions > ;
+};
 
-  validFloatReg: RegExp;
-  morePresionReg: RegExp | void;
+export type InputOptions = {
+  unsafeSet: boolean;
+
+  bind: string;
+  min: string,
+  max: string,
+  presion: string,
+
+  local: string,
+  predifined: string,
+
+  numricOptions: AutoNumericOptions;
 };
