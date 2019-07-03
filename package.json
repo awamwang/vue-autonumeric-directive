@@ -36,7 +36,10 @@
   "keywords": [
     "vue",
     "number",
-    "format"
+    "format",
+    "指令",
+    "数字",
+    "格式化"
   ],
   "author": "Awam Wang",
   "license": "MIT",
