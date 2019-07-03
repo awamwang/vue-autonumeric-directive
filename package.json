@@ -95,5 +95,17 @@
   },
   "dependencies": {
     "autonumeric": "^4.5.4"
-  }
+  },
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keepgoingwm/vue-autonumeric-directive.git"
+  },
+  "bugs": {
+    "url": "https://github.com/keepgoingwm/vue-autonumeric-directive/issues"
+  },
+  "homepage": "https://github.com/keepgoingwm/vue-autonumeric-directive#readme"
 }
