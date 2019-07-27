@@ -30,7 +30,7 @@ const builds = {
     banner
   },
   // development build (Browser)
-  'web-full-dev': {
+  'web-dev': {
     entry: path.resolve(__dirname, '../src/index.js'),
     dest: path.resolve(__dirname, '../dist/vue-autonumeric-directive.js'),
     format: 'umd',
@@ -38,7 +38,7 @@ const builds = {
     banner
   },
   // production build (Browser)
-  'web-full-prod': {
+  'web-prod': {
     entry: path.resolve(__dirname, '../src/index.js'),
     dest: path.resolve(__dirname, '../dist/vue-autonumeric-directive.min.js'),
     format: 'umd',
@@ -46,14 +46,14 @@ const builds = {
     banner
   },
   // Runtime only ES modules build (for bundlers)
-  'web-runtime-esm': {
+  'web-esm': {
     entry: path.resolve(__dirname, '../src/index.js'),
     dest: path.resolve(__dirname, '../dist/vue-autonumeric-directive.esm.js'),
     format: 'es',
     banner
   },
   // ES modules build (for direct import in browser)
-  'web-full-esm-browser-dev': {
+  'web-esm-browser-dev': {
     entry: path.resolve(__dirname, '../src/index.js'),
     dest: path.resolve(__dirname, '../dist/vue-autonumeric-directive.esm.browser.js'),
     format: 'es',
