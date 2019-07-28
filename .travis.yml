@@ -4,6 +4,8 @@ cache:
     - node_modules
 node_js:
 - lts/*
+addons:
+  chrome: stable
 before_install:
 - npm install -g semistandard
 - npm install -g prettier

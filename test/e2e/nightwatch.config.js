@@ -20,7 +20,7 @@ module.exports = {
     'start_process': true,
     "server_path": require('chromedriver').path,
     "cli_args": [
-      "--verbose"
+      "--verbose",
     ],
     "port": 9515
   },  
@@ -42,7 +42,10 @@ module.exports = {
       'desiredCapabilities': {
         'browserName': 'chrome',
         'javascriptEnabled': true,
-        'acceptSslCerts': true
+        'acceptSslCerts': true,
+        "chromeOptions": {
+          "args" : ["--no-sandbox"]
+        },
       }
     },
 
