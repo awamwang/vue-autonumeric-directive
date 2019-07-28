@@ -62,7 +62,6 @@
     "eslint-plugin-flowtype": "^3.10.1",
     "eslint-plugin-jasmine": "^2.10.1",
     "flow-bin": "^0.101.0",
-    "geckodriver": "^1.16.2",
     "http-server": "^0.11.1",
     "karma": "^4.1.0",
     "karma-chrome-launcher": "^2.2.0",
