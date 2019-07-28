@@ -5,30 +5,31 @@ module.exports = {
   'custom_commands_path': ['node_modules/nightwatch-helpers/commands'],
   'custom_assertions_path': ['node_modules/nightwatch-helpers/assertions'],
 
-  // 'selenium': {
-  //   'start_process': true,
-  //   'server_path': require('selenium-server').path,
-  //   'host': '127.0.0.1',
-  //   'port': 4444,
-  //   'cli_args': {
-  //     'webdriver.chrome.driver': require('chromedriver').path,
-  //     // 'webdriver.gecko.driver': require('geckodriver').path
-  //   }
-  // },
+  'selenium': {
+    'start_process': false,
+    'server_path': require('selenium-server').path,
+    'host': '127.0.0.1',
+    'port': 9515,
+    'cli_args': {
+      'webdriver.chrome.driver': require('chromedriver').path,
+      // 'webdriver.gecko.driver': require('geckodriver').path
+    }
+  },
 
-  "webdriver": {
-    'start_process': true,
-    "server_path": require('chromedriver').path,
-    "cli_args": [
-      "--verbose",
-    ],
-    "port": 9515
-  },  
+  // "webdriver": {
+  //   'start_process': true,
+  //   "server_path": require('chromedriver').path,
+  //   "cli_args": [
+  //     "--verbose",
+  //   ],
+  //   "port": 9515
+  // },  
 
   'test_settings': {
     'default': {
-      // 'selenium_port': 9515,
-      // 'selenium_host': 'localhost',
+      'selenium_port': 9515,
+      'selenium_host': 'localhost',
+      "default_path_prefix" : "",
       'silent': true,
       'screenshots': {
         'enabled': true,

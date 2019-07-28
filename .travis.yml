@@ -11,7 +11,7 @@ before_install:
 - npm install -g prettier
 - npm install -g eslint
 - # start your web application and listen on `localhost`
-- google-chrome-stable --headless --disable-gpu --remote-debugging-port=9515 http://localhost
+- google-chrome-stable --headless --disable-gpu --remote-debugging-port=9515 http://localhost &
 script:
 - npm run build
 - npm run test
