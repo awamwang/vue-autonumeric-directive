@@ -11,8 +11,8 @@ module.exports = {
     'host': '127.0.0.1',
     'port': 4444,
     'cli_args': {
-      'webdriver.chrome.driver': require('chromedriver').path
-      // , 'webdriver.gecko.driver': require('geckodriver').path
+      'webdriver.chrome.driver': require('chromedriver').path,
+      // 'webdriver.gecko.driver': require('geckodriver').path
     }
   },
 
@@ -50,7 +50,8 @@ module.exports = {
       'desiredCapabilities': {
         'browserName': 'phantomjs',
         'javascriptEnabled': true,
-        'acceptSslCerts': true
+        'acceptSslCerts': true,
+        'phantomjs.binary.path': require('phantomjs-prebuilt').path
       }
     }
   }

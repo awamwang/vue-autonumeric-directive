@@ -8,6 +8,10 @@ before_install:
 - npm install -g semistandard
 - npm install -g prettier
 - npm install -g eslint
+before_script:
+- wget http://chromedriver.storage.googleapis.com/75.0.3770.90/chromedriver_linux64.zip
+- unzip chromedriver_linux64.zip -d /home/travis/virtualenv/python2.7.12/bin/
+- export CHROME_BIN=chromium-browser
 script:
 - npm run build
 - npm run test
