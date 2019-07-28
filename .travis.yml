@@ -7,9 +7,9 @@ node_js:
 addons:
   chrome: stable
 before_install:
-- npm install -g semistandard
-- npm install -g prettier
-- npm install -g eslint
+# - npm install -g semistandard
+# - npm install -g prettier
+# - npm install -g eslint
 # - start your web application and listen on `localhost`
 # - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9515 http://localhost &
 script:
@@ -19,6 +19,6 @@ after_success:
 - chmod +x .travis/push.sh
 - .travis/push.sh
 after_failure:
-  - cat MSBuild_*.failure.txt
+  - ls -a
 env:
   global:
