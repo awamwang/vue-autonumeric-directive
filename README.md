@@ -12,11 +12,9 @@
 
 example(待添加)
 
-[TOC]
-
 ## Introduction
 
-`vue-autonumeric-directive`是一个基于[autoNumeric](https://github.com/autoNumeric/autoNumeric#options)的Vue插件，使用简单的指令方式，对需要的元素添加格式化功能。
+`vue-autonumeric-directive`是一个基于[autoNumeric](https://github.com/autoNumeric/autoNumeric)的Vue插件，使用简单的指令方式，对需要的元素添加格式化功能。
 
 ## Use Guide
 
