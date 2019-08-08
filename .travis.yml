@@ -15,6 +15,9 @@ only:
 before_install:
 # - start your web application and listen on `localhost`
 # - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9515 http://localhost &
+install:
+  - wget https://raw.githubusercontent.com/ekalinin/github-markdown-toc/master/gh-md-toc
+  - chmod a+x gh-md-toc
 before_script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
@@ -23,6 +26,8 @@ before_script:
 script:
   - npm run build
   - npm run test
+  - ./gh-md-toc ./README.md
+  pwd
 after_success:
   - chmod +x .travis/push.sh
   - .travis/push.sh
