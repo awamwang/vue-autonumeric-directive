@@ -1,6 +1,6 @@
 {
   "name": "vue-autonumeric-directive",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Vue directive plugin to assure number to be number",
   "main": "dist/vue-autonumeric-directive.common.js",
   "typings": "types/index.d.ts",
