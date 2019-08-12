@@ -81,14 +81,16 @@ declare type InputOptions = {
   bind: string;
   min: string,
   max: string,
-  presion: string,
+  presion: string,  // 精确到小数点后几位
 
-  local: string,
-  predifined: string,
+  local: string,    // autoNumeric本地化配置，
+  predifined: string, // autoNumeric预定义配置
 
   numricOptions: AutoNumericOptions;
 };
 ```
+local: 参考[autoNumeric language options](https://github.com/autoNumeric/autoNumeric#predefined-language-options)
+predifined: 参考[autoNumeric predifined options](https://github.com/autoNumeric/autoNumeric#predefined-options)
 
 ### numricOptions选项
 
