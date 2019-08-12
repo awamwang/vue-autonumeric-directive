@@ -12,6 +12,7 @@ let MyPlugin = {
 MyPlugin.install = function(Vue: Vue, outerOptions: PluginsOptions = {}) {
   Vue.directive('number', {
     bind(el, binding: VNodeDirective, vnode: VNode) {
+      // TODO 如何支持循环组件
       let targetElement = checkElementType(el, vnode)
       let oldValue = getVNodeValue(vnode)
 
