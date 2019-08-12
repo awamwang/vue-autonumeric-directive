@@ -28,7 +28,9 @@ function getChildInput(el) {
 
 function handleElementUI(el, realElement, vnode) {
   if (includes(el.classList, 'el-input')) {
-    realElement.value = vnode.data.model.value
+    if (vnode.data.model && vnode.data.model.value !== undefined) {
+      realElement.value = vnode.data.model.value
+    }
   }
 }
 
