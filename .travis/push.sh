@@ -31,6 +31,14 @@ upload_files() {
   fi
 }
 
+npm_publish() {
+  if [ -n "$TRAVIS_TAG" ]; then
+    echo "Npm publish ${TRAVIS_TAG}..."
+    npm publish > /dev/null 2>&1
+  fi
+}
+
 setup_git
 commit_website_files
 upload_files
+npm_publish
