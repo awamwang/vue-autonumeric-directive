@@ -15,7 +15,7 @@ const allowedTagList = [
 
 function getChildInput(el) {
   if (el.children) {
-    for (let i = 0, len = el.children.length; i < len - 1; i++) {
+    for (let i = 0, len = el.children.length; i < len; i++) {
       let child = el.children[i]
       if (child.tagName === 'INPUT') {
         return child
