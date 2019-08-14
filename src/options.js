@@ -42,8 +42,8 @@ function handlePresionOption(binding, numeriOptionsArr, outerOptions) {
   setNumricOptions(numeriOptionsArr, 'decimalPlaces', presion.toString())
 }
 
-function handlePureOption(binding, options) {
-  let isPure: boolean = binding.modifiers.pure
+function handlePureOption(binding, options, outerOptions) {
+  let isPure: boolean = binding.modifiers.pure || outerOptions.pure
   if (isPure) {
     setNumricOptions(options, 'digitGroupSeparator', '')
   }
@@ -53,6 +53,8 @@ function handMinMaxOption(binding, options) {
   let min: string = binding.value.min
   let max: string = binding.value.max
 
+  min !== undefined && (min = min.toString())
+  max !== undefined && (max = max.toString())
   if (typeof min === 'string' && typeof Number(min) === 'number') {
     setNumricOptions(options, 'minimumValue', min)
   } else if (min !== undefined) {
@@ -67,19 +69,24 @@ function handMinMaxOption(binding, options) {
 
 export default function getOptions(binding: VNodeDirective, outerOptions: PluginsOptions = {}) {
   let isInt: boolean = binding.modifiers.int
+  let isPurePositiveInteger: boolean = binding.modifiers.ppi
   let unsafeSet: boolean = binding.value.unsafeSet || outerOptions.unsafeSet
 
-  let numricOptions: Array<AutoNumericOptions> = binding.value.numricOptions ? [binding.value.numricOptions] : [{}]
+  let numricOptions: Array<AutoNumericOptions> = binding.value.numricOptions ? [binding.value.numricOptions] : [{}] // 维护一个配置数组，新增的配置unshift进来
 
   if (isInt && !binding.value.predifined) {
     binding.value.predifined = 'integer'
   }
+  if (isPurePositiveInteger && !binding.value.predifined) {
+    binding.value.predifined = 'integerPos'
+    setNumricOptions(numricOptions, 'digitGroupSeparator', '')
+  }
 
-  handlePredefinedOption(binding, numricOptions) // 先执行产生的配置在配置数组后面，优先级高
+  handlePredefinedOption(binding, numricOptions)
   handleLocalOption(binding, numricOptions)
 
   handlePresionOption(binding, numricOptions, outerOptions)
-  handlePureOption(binding, numricOptions)
+  handlePureOption(binding, numricOptions, outerOptions)
   handMinMaxOption(binding, numricOptions)
 
   return {

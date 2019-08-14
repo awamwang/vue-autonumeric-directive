@@ -1,4 +1,4 @@
-Vue.use(VueNumberFormat)
+Vue.use(VueNumberFormat, { pure: false })
 
 window.onload = function() {
   input1.addEventListener('keyup', function(e) {

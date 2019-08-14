@@ -10,7 +10,7 @@
 
 
 
-example(待添加)
+[example](https://github.com/keepgoingwm/vue-autonumeric-directive/tree/master/examples)
 
 ## Introduction
 
@@ -74,7 +74,19 @@ new Vue({
 
 ## Options
 
+### 全局Options
+
+```typescript
+export type PluginsOptions = {
+  unsafeSet: boolean; // use unsafe method to set value to element and vnode (eval, more powerful)
+
+  pure: boolean;	// 是否不使用分隔符（例如千分位逗号）
+  presion: number;	  // 精确到小数点后几位
+}
 ```
+
+### 指令Options
+```typescript
 declare type InputOptions = {
   unsafeSet: boolean;
 
@@ -89,8 +101,14 @@ declare type InputOptions = {
   numricOptions: AutoNumericOptions;
 };
 ```
-local: 参考[autoNumeric language options](https://github.com/autoNumeric/autoNumeric#predefined-language-options)
-predifined: 参考[autoNumeric predifined options](https://github.com/autoNumeric/autoNumeric#predefined-options)
++ local: 参考[autoNumeric language options](https://github.com/autoNumeric/autoNumeric#predefined-language-options)
++ predifined: 参考[autoNumeric predifined options](https://github.com/autoNumeric/autoNumeric#predefined-options)
+
+### 指令modifiers
+
++ int // 整数
++ pure // 不使用分隔符（例如千分位逗号）
++ ppi  // pure positive integer 无分隔符正整数
 
 ### numricOptions选项
 

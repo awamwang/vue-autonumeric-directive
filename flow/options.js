@@ -1,7 +1,8 @@
 declare type PluginsOptions = {
   unsafeSet: boolean; // use unsafe method to set value to element and vnode (eval, more powerful)
 
-  presion: number;
+  pure: boolean; // 是否不使用分隔符（例如千分位逗号）
+  presion: number; // 精确到小数点后几位
 }
 
 declare type AutoNumericOptions = Object
@@ -18,12 +19,12 @@ declare type InputOptions = {
   unsafeSet: boolean;
 
   bind: string;
-  min: string,
-  max: string,
-  presion: string,
+  min: string;
+  max: string;
+  presion: string; // 精确到小数点后几位
 
-  local: string,
-  predifined: string,
+  local: string; // autoNumeric本地化配置，
+  predifined: string; // autoNumeric预定义配置
 
   numricOptions: AutoNumericOptions;
 };
