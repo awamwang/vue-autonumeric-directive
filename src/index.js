@@ -52,6 +52,15 @@ MyPlugin.install = function(Vue: Vue, outerOptions: PluginsOptions = {}) {
         event.preventDefault()
       })
     },
+    update(el, binding: VNodeDirective, vnode: VNode) {
+      if (el._autoNumericElement.valueOnFocus !== binding.value.bind) { // 通过代码直接修改了binding.value.bind会进入这个逻辑
+        let targetElement = checkElementType(el, vnode)
+        let oldValue = getVNodeValue(vnode)
+        let options = getOptions(binding, outerOptions)
+
+        el._autoNumericElement = new AutoNumeric(targetElement, oldValue, options.numricOptions)
+      }
+    },
   })
 }
 
