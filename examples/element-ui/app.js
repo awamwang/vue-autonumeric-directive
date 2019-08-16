@@ -22,7 +22,7 @@ new Vue({
       ]
     },
     config4: {
-      bind: 'input3.arr[0].v',
+      bind: 'input4.arr[0].v',
       predifined: 'integerNeg',
       numricOptions: {
         decimalPlaces: 1,
