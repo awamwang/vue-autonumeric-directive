@@ -16,6 +16,13 @@ let localOptions = {
   TR: 'Turkish',
 }
 
+function handleBindOption(binding) {
+  let bind = binding.value.bind
+  if (typeof bind !== 'string') {
+    error('wrong bind value, should be a prop path string')
+  }
+}
+
 function setNumricOptions(optionsArr, key, value) {
   optionsArr[optionsArr.length - 1][key] = value
 }
@@ -71,6 +78,8 @@ export default function getOptions(binding: VNodeDirective, outerOptions: Plugin
   let isInt: boolean = binding.modifiers.int
   let isPurePositiveInteger: boolean = binding.modifiers.ppi
   let unsafeSet: boolean = binding.value.unsafeSet || outerOptions.unsafeSet
+
+  handleBindOption(binding)
 
   let numricOptions: Array<AutoNumericOptions> = binding.value.numricOptions ? [binding.value.numricOptions] : [{}] // 维护一个配置数组，新增的配置unshift进来
 
