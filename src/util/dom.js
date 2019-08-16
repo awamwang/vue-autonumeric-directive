@@ -65,9 +65,8 @@ export let unshiftEventHandler = (el, eventType, handler) => {
   // }
 }
 
-export let getVNodeValue = (vnode) => {
+export let getVNodeValue = (vnode, ele) => {
   let res
-  let ele = vnode.elm
 
   if (vnode.data && vnode.data.model) {
     res = vnode.data.model.value

@@ -1,8 +1,8 @@
 /* @flow */
 import getOptions from './options'
 import AutoNumeric from 'autonumeric/dist/autoNumeric.min.js'
-import { setProp } from './util/lang'
-import { checkElementType, unshiftEventHandler, getVNodeValue, getElementValue } from './util/dom'
+import { setProp, getProp } from './util/lang'
+import { checkElementType, unshiftEventHandler, getElementValue } from './util/dom'
 
 let MyPlugin = {
   AutoNumeric,
@@ -13,10 +13,10 @@ MyPlugin.install = function(Vue: Vue, outerOptions: PluginsOptions = {}) {
   Vue.directive('number', {
     bind(el, binding: VNodeDirective, vnode: VNode) {
       // TODO 如何支持循环组件
-      let targetElement = checkElementType(el, vnode)
-      let oldValue = getVNodeValue(vnode)
-
       let options: Options = getOptions(binding, outerOptions)
+
+      let targetElement = checkElementType(el, vnode)
+      let oldValue = getProp(vnode.context, options.bind)
 
       el._autoNumericElement = new AutoNumeric(targetElement, oldValue, options.numricOptions)
       let setValue = options.unsafeSet ? unsafeSetValue : safeSetValue
@@ -53,13 +53,15 @@ MyPlugin.install = function(Vue: Vue, outerOptions: PluginsOptions = {}) {
       })
     },
     update(el, binding: VNodeDirective, vnode: VNode) {
-      if (el._autoNumericElement.lastVal !== binding.value.bind) { // 通过代码直接修改了binding.value.bind会进入这个逻辑
+      let options = getOptions(binding, outerOptions)
+      let bindValue = getProp(vnode.context, options.bind)
+
+      if (el._autoNumericElement.lastVal !== bindValue) { // 通过代码直接修改了绑定的值，会进入这个逻辑
         let targetElement = checkElementType(el, vnode)
-        let oldValue = getVNodeValue(vnode)
         let options = getOptions(binding, outerOptions)
 
         el._autoNumericElement.remove()
-        el._autoNumericElement = new AutoNumeric(targetElement, options.numricOptions)
+        el._autoNumericElement = new AutoNumeric(targetElement, bindValue, options.numricOptions)
       }
     },
   })
