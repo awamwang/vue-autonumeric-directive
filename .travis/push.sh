@@ -34,6 +34,7 @@ upload_files() {
 }
 
 npm_publish() {
+  echo "$TRAVIS_COMMIT_MESSAGE"
   if [[ $TRAVIS_COMMIT_MESSAGE =~ $version_pattern ]]; then
     echo "Npm publish ${TRAVIS_COMMIT_MESSAGE}..."
     npm publish > /dev/null 2>&1
