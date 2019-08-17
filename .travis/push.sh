@@ -1,5 +1,5 @@
 #!/bin/bash
-version_pattern = '^\d+\.\d+\.\d+$'
+version_pattern='^\d+\.\d+\.\d+$'
 
 setup_git() {
   git config --global user.email "keepgoingwm@gmail.com"
@@ -35,9 +35,10 @@ upload_files() {
 
 npm_publish() {
   echo "$TRAVIS_COMMIT_MESSAGE"
-  if [[ $TRAVIS_COMMIT_MESSAGE =~ $version_pattern ]]; then
+  echo $version_pattern
+  if [[ $TRAVIS_COMMIT_MESSAGE =~ $version_pattern ]] then
     echo "Npm publish ${TRAVIS_COMMIT_MESSAGE}..."
-    npm publish > /dev/null 2>&1
+    npm publish
   fi
 }
 
