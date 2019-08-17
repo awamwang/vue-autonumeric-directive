@@ -1,12 +1,6 @@
 # vue-autonumeric-directive
 
-[![npm Version][NPM VERSION BADGE]][NPM PAGE]
-
-[![Node.js][NODE VERSION BADGE]][NODE PAGE]
-
-[![GitHub License][LICENSE BADGE]][LICENSE PAGE]
-
-[![Build Status][BUILD BADGE]][BUILD PAGE]
+[![npm Version][NPM VERSION BADGE]][NPM PAGE][![Node.js][NODE VERSION BADGE]][NODE PAGE][![GitHub License][LICENSE BADGE]][LICENSE PAGE][![Build Status][BUILD BADGE]][BUILD PAGE]
 
 
 
