@@ -27,7 +27,7 @@ script:
   - npm run build
   - npm run test
   - ./gh-md-toc ./README.md
-  pwd
+  - pwd
 after_success:
   - chmod +x .travis/push.sh
   - .travis/push.sh
