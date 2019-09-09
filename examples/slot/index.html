@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <script src="../libs/vue.min-2.6.10.js"></script>
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script src="../../dist/vue-autonumeric-directive.js"></script>
+  <!-- <script src="../../dist/vue-autonumeric-directive.min.js"></script> -->
+</head>
+
+<body>
+  <div id="demo">
+    <el-table :data="list" stripe>
+      <el-table-column prop="val" label="Value">
+        <template slot-scope="scope">
+          <p>Default options: float, decimalPlaces(presion) = 2 ; Options: {{ {bind: `list[${scope.$index}].val`} }}</p>
+          <el-input name="input1" v-model="scope.row.val" v-number="{bind: `list[${scope.$index}].val`}"></el-input>
+        </template>
+      </el-table-column>
+    </el-table>
+    <p>list vals</p>
+    <el-table :data="list" stripe>
+      <el-table-column prop="val" label="Value">
+      </el-table-column>
+    </el-table>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+
+</html>
