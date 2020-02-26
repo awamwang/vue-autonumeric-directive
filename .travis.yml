@@ -1,15 +1,15 @@
 sudo: required
 dist: trusty
 addons:
-  chrome: stable
+  chrome: 75
   branches:
 language: node_js
 cache:
   directories:
     - node_modules
 node_js:
-  # - lts/*
-  - 10
+  - lts/*
+  # - 10
 ###################
 only:
   - master
