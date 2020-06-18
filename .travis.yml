@@ -1,7 +1,7 @@
 sudo: required
 dist: trusty
 addons:
-  chrome: 75
+  chrome: 83
   branches:
 language: node_js
 cache:
