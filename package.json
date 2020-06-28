@@ -12,8 +12,8 @@
     "types/*.d.ts"
   ],
   "scripts": {
+    "commit": "git-cz",
     "dev": "rollup -w -c scripts/config.js --environment TARGET:web-dev",
-    "dev:silenct": "rollup -w -c scripts/config.js --silent avoidingEval --environment TARGET:web-dev",
     "dev:cjs": "rollup -w -c scripts/config.js --environment TARGET:web-cjs-dev",
     "dev:esm": "rollup -w -c scripts/config.js --environment TARGET:web-esm-browser-dev",
     "build": "node scripts/build.js",
@@ -58,7 +58,9 @@
     "chalk": "^2.4.2",
     "chromedriver": "^75.0.0",
     "codecov": "^3.5.0",
+    "commitizen": "^4.1.2",
     "cross-spawn": "^6.0.5",
+    "cz-conventional-changelog": "^3.2.0",
     "element-ui": "^2.9.1",
     "eslint": "^5.16.0",
     "eslint-plugin-flowtype": "^3.10.1",
@@ -96,7 +98,8 @@
     "webpack": "^4.28.4"
   },
   "dependencies": {
-    "autonumeric": "^4.5.4"
+    "autonumeric": "^4.5.4",
+    "rap": "^1.0.0-beta.2"
   },
   "directories": {
     "example": "examples",
@@ -109,5 +112,10 @@
   "bugs": {
     "url": "https://github.com/keepgoingwm/vue-autonumeric-directive/issues"
   },
-  "homepage": "https://github.com/keepgoingwm/vue-autonumeric-directive#readme"
+  "homepage": "https://github.com/keepgoingwm/vue-autonumeric-directive#readme",
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  }
 }
