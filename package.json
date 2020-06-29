@@ -24,7 +24,9 @@
     "test:types": "tsc -p ./types/test/tsconfig.json",
     "lint": "eslint src scripts test",
     "flow": "flow check",
-    "tool": "vue-devtools"
+    "tool": "vue-devtools",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
@@ -47,13 +49,18 @@
   "author": "Awam Wang(wm.keepgoing@gmail.com)",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.4.5",
+    "@babel/core": "^7.10.3",
     "@babel/preset-env": "^7.4.5",
+    "@storybook/addon-actions": "^5.3.19",
+    "@storybook/addon-links": "^5.3.19",
+    "@storybook/addons": "^5.3.19",
+    "@storybook/vue": "^5.3.19",
     "@types/node": "^12.0.8",
     "@types/vue": "^2.0.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.6",
     "babel-plugin-istanbul": "^5.1.4",
+    "babel-preset-vue": "^2.0.2",
     "buble": "^0.19.7",
     "chalk": "^2.4.2",
     "chromedriver": "^75.0.0",
@@ -95,6 +102,7 @@
     "terser": "^4.0.0",
     "typescript": "^3.5.1",
     "vue": "^2.6.10",
+    "vue-loader": "^15.9.3",
     "webpack": "^4.28.4"
   },
   "dependencies": {
