@@ -24,7 +24,7 @@ commit_website_files() {
   fi
 }
 
-upload_files() {
+git_push() {
   if [ $TRAVIS_EVENT_TYPE != "pull_request" ]; then
     if [ $TRAVIS_BRANCH == "master" ]; then
       echo "Pushing to master branch..."
@@ -42,5 +42,5 @@ npm_publish() {
 
 setup_git
 commit_website_files
-upload_files
-npm_publish
+git_push
+# npm_publish
