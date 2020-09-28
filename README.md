@@ -1,3 +1,6 @@
+在开发新的独立插件[vue-number-directive](https://github.com/awamwang/vue-number-directive)，已经完成基础功能，正在添加测试。该插件不再更新
+
+
 # vue-autonumeric-directive
 
 [![npm Version][NPM VERSION BADGE]][NPM PAGE]  [![Node.js][NODE VERSION BADGE]][NODE PAGE]  [![GitHub License][LICENSE BADGE]][LICENSE PAGE]  [![Build Status][BUILD BADGE]][BUILD PAGE]
