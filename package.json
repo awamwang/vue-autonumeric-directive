@@ -74,7 +74,7 @@
     "eslint-plugin-jasmine": "^2.10.1",
     "flow-bin": "^0.101.0",
     "http-server": "^0.11.1",
-    "karma": "^4.1.0",
+    "karma": "^6.3.14",
     "karma-chrome-launcher": "^2.2.0",
     "karma-coverage": "^1.1.2",
     "karma-firefox-launcher": "^1.1.0",
